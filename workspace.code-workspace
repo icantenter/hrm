@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "ihrm_parent"
+		},
+		{
+			"path": "project-saas-hrm-vue-master"
+		},
+		{
+			"name": "hrm",
+			"path": "."
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic",
+		"maven.view": "hierarchical"
+	}
+}
