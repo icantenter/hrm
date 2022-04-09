@@ -1,8 +1,6 @@
 package com.ihrm.domain.company;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,7 +13,7 @@ import java.util.Date;
 @Data
 public class Company implements Serializable {
     private static final long serialVersionUID = 594829320797158219L;
-    //ID
+    // ID
     @Id
     private String id;
     /**

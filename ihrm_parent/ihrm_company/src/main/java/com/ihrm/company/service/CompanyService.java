@@ -15,12 +15,12 @@ public class CompanyService {
     @Autowired
     private IdWorker idWorker;
 
-//    配置idwork
-public void add(Company company) {
+    // 配置idwork
+    public void add(Company company) {
         String id = idWorker.nextId() + "";
         company.setId(id);
-        company.setAuditState("1"); //0 unaudited, 1 audited
-        company.setState(1); //0 inactive,  1 active
+        company.setAuditState("1"); // 0 unaudited, 1 audited
+        company.setState(1); // 0 inactive, 1 active
         companyDao.save(company);
     }
 

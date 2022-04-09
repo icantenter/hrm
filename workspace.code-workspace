@@ -13,6 +13,10 @@
 	],
 	"settings": {
 		"java.configuration.updateBuildConfiguration": "automatic",
-		"maven.view": "hierarchical"
+		"maven.view": "hierarchical",
+		"cSpell.words": [
+			"mockjs",
+			"saas"
+		]
 	}
 }
