@@ -1,7 +1,7 @@
 import axios from 'axios'
-import {Message} from 'element-ui'
+import { Message } from 'element-ui'
 import store from '@/store'
-import {getToken} from '@/utils/auth'
+import { getToken } from '@/utils/auth'
 
 // create an axios instance
 const instance = axios.create({
@@ -47,7 +47,7 @@ instance.interceptors.response.use(
           location.reload() // 为了重新实例化vue-router对象 避免bug
         })
         return Promise.reject(new Error('token expired'))
-      }else if (errCode != ok) {
+      } else if (errCode != ok) {
         Message({
           message: res.message,
           type: 'error',
@@ -104,6 +104,9 @@ export const createAPI = (url, method, data) => {
   } else {
     config.data = data
   }
+  console.log(url);
+  console.log(config);
+  console.log(data);
   return instance({
     url,
     method,
@@ -120,7 +123,7 @@ export const createFormAPI = (url, method, data) => {
   }
   config.responseType = 'json'
   config.transformRequest = [
-    function(data) {
+    function (data) {
       let ret = ''
       for (let it in data) {
         ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
@@ -143,7 +146,7 @@ export const createImgAPI = (url, method, data) => {
   }
   config.responseType = 'blob'
   config.transformRequest = [
-    function(data) {
+    function (data) {
       let ret = ''
       for (let it in data) {
         ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
@@ -167,7 +170,7 @@ export const createFileAPI = (url, method, data) => {
   }
   config.responseType = 'arraybuffer'
   config.transformRequest = [
-    function(data) {
+    function (data) {
       let ret = ''
       for (let it in data) {
         ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'

@@ -2,21 +2,17 @@ package com.ihrm.company.service;
 
 import java.util.List;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-
+import com.ihrm.common.service.BaseService;
 import com.ihrm.common.utils.IdWorker;
 import com.ihrm.company.dao.DepartmentDao;
 import com.ihrm.domain.company.Department;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.domain.Specification;
+
 import org.springframework.stereotype.Service;
 
 @Service
-public class DepartmentService {
+public class DepartmentService extends BaseService {
     @Autowired
     private DepartmentDao departmentDao;
 
@@ -43,16 +39,7 @@ public class DepartmentService {
     }
 
     public List<Department> findAll(String companyId) {
-        Specification<Department> spec = new Specification<Department>() {
-
-            @Override
-            public Predicate toPredicate(Root<Department> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
-
-                return cb.equal(root.get("companyId").as(String.class), companyId);
-            }
-
-        };
-        return departmentDao.findAll(spec);
+        return departmentDao.findAll(getSpec(companyId));
     }
 
     public void deleteById(String id) {

@@ -2,6 +2,7 @@ package com.ihrm.company.controller;
 
 import java.util.List;
 
+import com.ihrm.common.controller.BaseController;
 import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
 import com.ihrm.company.service.CompanyService;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/company")
 
-public class DepartmentController {
+public class DepartmentController extends BaseController {
 
     @Autowired
     private DepartmentService departmentService;
@@ -32,16 +33,14 @@ public class DepartmentController {
 
     @RequestMapping(value = "/department", method = RequestMethod.POST)
     public Result save(@RequestBody Department department) {
-        String id = "1";
-        department.setId(id);
+
+        department.setId(companyId);
         departmentService.save(department);
         return new Result(ResultCode.SUCCESS);
     }
 
     @RequestMapping(value = "/department", method = RequestMethod.GET)
     public Result findAll() {
-
-        String companyId = "1";
 
         Company company = companyService.findById(companyId);
         List<Department> list = departmentService.findAll(companyId);
